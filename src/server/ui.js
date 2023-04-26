@@ -1,11 +1,7 @@
 export const onOpen = () => {
-  const menu = SpreadsheetApp.getUi()
-    .createMenu('My Sample React Project') // edit me!
-    .addItem('Sheet Editor', 'openDialog')
-    .addItem('Sheet Editor (Bootstrap)', 'openDialogBootstrap')
-    .addItem('Sheet Editor (MUI)', 'openDialogMUI')
-    .addItem('Sheet Editor (Tailwind CSS)', 'openDialogTailwindCSS')
-    .addItem('About me', 'openAboutSidebar');
+  const menu = DocumentApp.getUi()
+    .createMenu('The Best IDE')
+    .addItem('Insert Code', 'openDialog');
 
   menu.addToUi();
 };
@@ -14,7 +10,7 @@ export const openDialog = () => {
   const html = HtmlService.createHtmlOutputFromFile('dialog-demo')
     .setWidth(600)
     .setHeight(600);
-  SpreadsheetApp.getUi().showModalDialog(html, 'Sheet Editor');
+  DocumentApp.getUi().showModalDialog(html, 'Sheet Editor');
 };
 
 export const openDialogBootstrap = () => {

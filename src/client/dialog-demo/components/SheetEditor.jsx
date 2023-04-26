@@ -7,11 +7,11 @@ import SheetButton from './SheetButton';
 import { serverFunctions } from '../../utils/serverFunctions';
 
 const SheetEditor = () => {
-  const [names, setNames] = useState([]);
+  const [text, setText] = useState([]);
 
   useEffect(() => {
     // Call a server global function here and handle the response with .then() and .catch()
-    serverFunctions.getSheetsData().then(setNames).catch(alert);
+    serverFunctions.getSelectedText().then(setText).catch(alert);
   }, []);
 
   const deleteSheet = (sheetIndex) => {
@@ -36,31 +36,7 @@ const SheetEditor = () => {
 
   return (
     <div>
-      <p>
-        <b>☀️ React demo! ☀️</b>
-      </p>
-      <p>
-        This is a sample page that demonstrates a simple React app. Enter a name
-        for a new sheet, hit enter and the new sheet will be created. Click the
-        red &times; next to the sheet name to delete it.
-      </p>
-      <FormInput submitNewSheet={submitNewSheet} />
-      <TransitionGroup className="sheet-list">
-        {names.length > 0 &&
-          names.map((name) => (
-            <CSSTransition
-              classNames="sheetNames"
-              timeout={500}
-              key={name.name}
-            >
-              <SheetButton
-                sheetDetails={name}
-                deleteSheet={deleteSheet}
-                setActiveSheet={setActiveSheet}
-              />
-            </CSSTransition>
-          ))}
-      </TransitionGroup>
+      <textarea value = {text}></textarea>
     </div>
   );
 };
