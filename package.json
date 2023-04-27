@@ -36,8 +36,7 @@
   "dependencies": {
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.1.6"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
