@@ -8,7 +8,7 @@ import {
 } from './ui';
 
 import { getSheetsData, addSheet, deleteSheet, setActiveSheet } from './sheets';
-import { getSelectedText } from './docs';
+import { getSelectedText, insertOrReplaceText } from './docs';
 
 // Public functions must be exported as named exports
 export {
@@ -23,4 +23,5 @@ export {
   deleteSheet,
   setActiveSheet,
   getSelectedText,
+  insertOrReplaceText,
 };

@@ -9,9 +9,14 @@ import { serverFunctions } from '../../utils/serverFunctions';
 const SheetEditor = () => {
   const [text, setText] = useState([]);
 
-  useEffect(() => {
+  useEffect(async () => {
     // Call a server global function here and handle the response with .then() and .catch()
-    serverFunctions.getSelectedText().then(setText).catch(alert);
+    try {
+      const response = await serverFunctions.getSelectedText()
+      setText(response)
+    } catch (error) {
+      alert(error)
+    }
   }, []);
 
   const deleteSheet = (sheetIndex) => {
@@ -21,6 +26,18 @@ const SheetEditor = () => {
   const setActiveSheet = (sheetName) => {
     serverFunctions.setActiveSheet(sheetName).then(setNames).catch(alert);
   };
+
+  const replaceText = async () => {
+    try {
+      const response = await serverFunctions.insertOrReplaceText(text)
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  const handleChange = (event) => {
+    setText(event.target.value)
+  }
 
   // You can also use async/await notation for server calls with our server wrapper.
   // (This does the same thing as .then().catch() in the above handlers.)
@@ -36,7 +53,8 @@ const SheetEditor = () => {
 
   return (
     <div>
-      <textarea value = {text}></textarea>
+      <textarea value = {text} onChange = {handleChange}></textarea>
+      <button onClick = {replaceText}>Done</button>
     </div>
   );
 };
