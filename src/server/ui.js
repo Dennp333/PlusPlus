@@ -7,7 +7,7 @@ export const onOpen = () => {
 };
 
 export const openDialog = () => {
-  const html = HtmlService.createHtmlOutputFromFile('dialog-demo')
+  const html = HtmlService.createHtmlOutputFromFile('app')
     .setWidth(600)
     .setHeight(600);
   DocumentApp.getUi().showModalDialog(html, 'Code Editor');
