@@ -1,6 +1,7 @@
 import {
   onOpen,
   openDialog,
+  closeDialog,
 } from './ui';
 
 import { getSelectedText, insertOrReplaceText } from './docs';
@@ -9,6 +10,7 @@ import { getSelectedText, insertOrReplaceText } from './docs';
 export {
   onOpen,
   openDialog,
+  closeDialog,
   getSelectedText,
   insertOrReplaceText,
 };

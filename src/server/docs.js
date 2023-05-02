@@ -1,4 +1,5 @@
 // Todo: Deal with partial selections
+import {closeDialog} from './ui'
 
 export const getSelectedText = () => {
     let selection = DocumentApp.getActiveDocument().getSelection()
@@ -20,6 +21,7 @@ export const insertOrReplaceText = (text) => {
         for (let i = 1; i < elements.length; i++) {
             elements[i].getElement().removeFromParent()
         }
+        closeDialog()
     } else {
         let cursor = DocumentApp.getActiveDocument().getCursor()
         if (cursor) {
@@ -27,6 +29,7 @@ export const insertOrReplaceText = (text) => {
             if (!element) {
                 throw "Cannot insert code here"
             }
+            closeDialog()
         } else {
             throw "Position to insert code not specified"
         }
