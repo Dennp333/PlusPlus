@@ -30,7 +30,7 @@ const App = () => {
         language = "python"
         height = "500px"
       />
-      <button onClick = {replaceText}>Done</button>
+      <button onClick = {replaceText}>Save</button>
     </>
   );
 };

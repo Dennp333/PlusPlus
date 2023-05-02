@@ -1,34 +1,29 @@
-// Todo: Deal with partial selections
-
 export const getSelectedText = () => {
     let selection = DocumentApp.getActiveDocument().getSelection()
     let text = ""
     if (selection) {
         let elements = selection.getRangeElements()
+
+        let firstElement = elements[0].getElement().asText()
+        let firstText = firstElement.getText()
+        let start = elements[0].getStartOffset()
+        start = start < 0 ? 0 : start
+
+        let lastElement = elements[elements.length - 1].getElement().asText()
+        let lastText = lastElement.getText()
+        let end = elements[elements.length - 1].getEndOffsetInclusive()
+        end = end < 0 ? lastText.length : end
+
         if (elements.length === 1) {
-            let start = elements[0].getStartOffset()
-            let end = elements[0].getEndOffsetInclusive()
-            let current = elements[0].getElement().asText().getText()
-
-            start = start < 0 ? 0 : start
-            end = end < 0 ? current.length : end
-            text = current.slice(start, end + 1)
+            text = firstText.slice(start, end + 1)
         } else {
-            let firstElement = elements[0].getElement().asText().getText()
-            let start = elements[0].getStartOffset()
-            start = start < 0 ? 0 : start
-
-            let lastElement = elements[elements.length - 1].getElement().asText().getText()
-            let end = elements[elements.length - 1].getEndOffsetInclusive()
-            end = end < 0 ? lastElement.length : end
-
-            text += firstElement.slice(start)
+            text += firstText.slice(start)
             text += "\n"
             for (let i = 1; i < elements.length - 1; i++) {
                 text += elements[i].getElement().asText().getText()
                 text += "\n"
             }
-            text += lastElement.slice(0, end + 1)
+            text += lastText.slice(0, end + 1)
         }
     }
     return text
@@ -38,15 +33,41 @@ export const insertOrReplaceText = (text) => {
     let selection = DocumentApp.getActiveDocument().getSelection()
     if (selection) {
         let elements = selection.getRangeElements()
-        elements[0].getElement().asText().setText(text)
-        for (let i = 1; i < elements.length; i++) {
-            elements[i].getElement().removeFromParent()
+
+        let firstElement = elements[0].getElement().asText()
+        let firstText = firstElement.getText()
+        let start = elements[0].getStartOffset()
+        start = start < 0 ? 0 : start
+
+        let lastElement = elements[elements.length - 1].getElement().asText()
+        let lastText = lastElement.getText()
+        let end = elements[elements.length - 1].getEndOffsetInclusive()
+        end = end < 0 ? lastText.length : end
+
+        if (elements.length === 1) {
+            let res = ""
+            res += firstText.slice(0, start)
+            res += text
+            res += firstText.slice(end + 1)
+            let success = firstElement.setText(res)
+            if (!success) {
+                throw "Cannot insert code here"
+            }
+        } else {
+            let success = firstElement.setText(firstText.slice(0, start) + text)
+            if (!success) {
+                throw "Cannot insert code here"
+            }
+            for (let i = 1; i < elements.length - 1; i++) {
+                elements[i].getElement().removeFromParent()
+            }
+            lastElement.deleteText(0, end)
         }
     } else {
         let cursor = DocumentApp.getActiveDocument().getCursor()
         if (cursor) {
-            let element = cursor.insertText(text)
-            if (!element) {
+            let success = cursor.insertText(text)
+            if (!success) {
                 throw "Cannot insert code here"
             }
         } else {

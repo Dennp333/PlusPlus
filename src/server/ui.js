@@ -1,6 +1,6 @@
 export const onOpen = () => {
   const menu = DocumentApp.getUi()
-    .createMenu('The Best IDE')
+    .createMenu('Docs++')
     .addItem('Insert Code', 'openDialog')
 
   menu.addToUi();
