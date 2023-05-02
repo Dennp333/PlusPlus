@@ -28,7 +28,7 @@ const App = () => {
         value = {code}
         onChange = {(value, event) => setCode(value)}
         language = "python"
-        height = "400px"
+        height = "500px"
       />
       <button onClick = {replaceText}>Done</button>
     </>
