@@ -40,15 +40,15 @@ export const insertOrReplaceText = (text) => {
         start = start < 0 ? 0 : start
 
         let lastElement = elements[elements.length - 1].getElement().asText()
-        let lastText = lastElement.getText()
         let end = elements[elements.length - 1].getEndOffsetInclusive()
-        end = end < 0 ? lastText.length : end
 
         if (elements.length === 1) {
             let res = ""
             res += firstText.slice(0, start)
             res += text
-            res += firstText.slice(end + 1)
+            if (end >= 0) {
+                res += firstText.slice(end + 1)
+            }
             let success = firstElement.setText(res)
             if (!success) {
                 throw "Cannot insert code here"
@@ -61,7 +61,11 @@ export const insertOrReplaceText = (text) => {
             for (let i = 1; i < elements.length - 1; i++) {
                 elements[i].getElement().removeFromParent()
             }
-            lastElement.deleteText(0, end)
+            if (end >= 0) {
+                lastElement.deleteText(0, end)
+            } else {
+                lastElement.setText("")
+            }
         }
     } else {
         let cursor = DocumentApp.getActiveDocument().getCursor()

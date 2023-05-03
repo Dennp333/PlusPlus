@@ -1,0 +1,20 @@
+button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
+    min-width: 5.14em;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 13px;
+    border: 1px solid rgb(218 220 224);
+    color: white;
+    background-color:rgba(26, 115, 232, 0.9);
+}
+
+button:hover {
+    background-color: rgb(66, 133, 244);
+}
+
+#bottom {
+    text-align: right;
+}

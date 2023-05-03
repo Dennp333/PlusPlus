@@ -8,14 +8,14 @@ export const onOpen = () => {
 
 export const openDialog = () => {
   const html = HtmlService.createHtmlOutputFromFile('app')
-    .setWidth(750)
+    .setWidth(700)
     .setHeight(750);
   DocumentApp.getUi().showModalDialog(html, 'Code Editor')
 };
 
-export const closeDialog = () => {
+export const closeDialog = (title) => {
   const output = HtmlService.createHtmlOutput('<script>google.script.host.close();</script>')
-    .setWidth(750)
+    .setWidth(700)
     .setHeight(750)
-  DocumentApp.getUi().showModalDialog(output, 'Saving...')
+  DocumentApp.getUi().showModalDialog(output, title)
 }
