@@ -13,16 +13,16 @@ const Menu = ({language, setLanguage, indent, setIndent, theme, setTheme}) => {
             title = "Language:"
         />
         <Select
-            value = {theme}
-            setValue = {setTheme}
-            options = {themes}
-            title = "Theme:"
-        />
-        <Select
             value = {indent}
             setValue = {setIndent}
             options = {indents}
             title = "Indentation:"
+        />
+        <Select
+            value = {theme}
+            setValue = {setTheme}
+            options = {themes}
+            title = "Theme:"
         />
     </div>
 }

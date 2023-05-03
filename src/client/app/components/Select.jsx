@@ -1,11 +1,13 @@
 import React from 'react'
 import './select.css'
 
+// Lets use the same colour scheme as the cancel button from chrome chan for the selects
+// And maybe my resume gray for the titles
 const Select = ({value, setValue, options, title}) => {
     return (
         <div>
             {title}
-            <select 
+            <select
                 value = {value}
                 onChange = {(event) => {setValue(event.target.value)}}
             >
