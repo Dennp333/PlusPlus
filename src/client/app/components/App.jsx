@@ -33,8 +33,8 @@ const App = () => {
   const options = {
     minimap: {enabled: false},
     detectIndentation: false,
-    tabSize: indent,
-    insertSpaces: indent !== 1
+    tabSize: indent > 0 ? indent : null,
+    insertSpaces: indent != 0
   }
 
   return (

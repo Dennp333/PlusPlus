@@ -26,5 +26,5 @@ export const themes = {
 export const indents = {
     "2 spaces": 2,
     "4 spaces": 4,
-    "Tab": 1
+    "Tab": 0
 }
