@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Editor from '@monaco-editor/react';
+import Menu from './Menu'
 import { serverFunctions } from '../../utils/serverFunctions'
 import './app.css'
 
 const App = () => {
   const [code, setCode] = useState("");
-  const [language, setLanguage] = useState(null)
-  const [indent, setIndent] = useState(null)
-  const [theme, setTheme] = useState(null)
+  const [language, setLanguage] = useState(null) //set default to null in prod
+  const [indent, setIndent] = useState(null) //set default to null in prod
+  const [theme, setTheme] = useState(null) //set default to null in prod
 
   useEffect(async () => {
     try {
@@ -37,15 +38,25 @@ const App = () => {
   }
 
   return (
-    <div>
-      <Editor
-        value = {code}
-        onChange = {(value, event) => setCode(value)}
+    <div id = "body">
+      <Menu
         language = {language}
+        setLanguage = {setLanguage}
+        indent = {indent}
+        setIndent = {setIndent}
         theme = {theme}
-        height = "500px"
-        options = {options}
+        setTheme = {setTheme}
       />
+      <div id = "editor">
+        <Editor
+          value = {code}
+          onChange = {(value, event) => setCode(value)}
+          language = {language}
+          theme = {theme}
+          height = "100%"
+          options = {options}
+        />
+      </div>
       <div id = "bottom">
         <button onClick = {replaceText}>Save</button>
       </div>

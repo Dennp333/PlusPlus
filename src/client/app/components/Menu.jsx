@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './menu.css'
 
-const Menu = () => {
-    return <div>Hello world</div>
+const Menu = ({language, setLanguage, indent, setIndent, theme, setTheme}) => {
+    const [open, setOpen] = useState(false)
+    return <div id = "menu">Hello world</div>
 }
 
 export default Menu
