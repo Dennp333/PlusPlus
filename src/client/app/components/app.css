@@ -7,6 +7,7 @@ button {
     border: 1px solid rgb(218 220 224);
     color: white;
     background-color:rgba(26, 115, 232, 0.9);
+    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
 }
 
 button:hover {
@@ -21,6 +22,7 @@ button:hover {
 
 #editor {
     flex-grow: 2;
+    font-family: Consolas, 'Courier New', monospace;
 }
 
 #bottom {
