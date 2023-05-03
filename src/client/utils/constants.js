@@ -17,3 +17,14 @@ export const languages = {
     "Swift": "swift",
     "TypeScript": "typescript"
 }
+
+export const themes = {
+    "Light": "light",
+    "Dark": "vs-dark"
+}
+
+export const indents = {
+    "2 spaces": 2,
+    "4 spaces": 4,
+    "Tab": 1
+}

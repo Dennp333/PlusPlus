@@ -6,9 +6,9 @@ import './app.css'
 
 const App = () => {
   const [code, setCode] = useState("");
-  const [language, setLanguage] = useState(null) //set default to null in prod
-  const [indent, setIndent] = useState(null) //set default to null in prod
-  const [theme, setTheme] = useState(null) //set default to null in prod
+  const [language, setLanguage] = useState("python") //set default to null in prod
+  const [indent, setIndent] = useState(4) //set default to null in prod
+  const [theme, setTheme] = useState("light") //set default to null in prod
 
   useEffect(async () => {
     try {

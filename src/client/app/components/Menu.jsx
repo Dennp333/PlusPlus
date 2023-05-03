@@ -1,9 +1,30 @@
 import React, { useState } from 'react'
 import './menu.css'
+import Select from './Select'
+import {languages, themes, indents} from '../../utils/constants'
 
 const Menu = ({language, setLanguage, indent, setIndent, theme, setTheme}) => {
     const [open, setOpen] = useState(false)
-    return <div id = "menu">Hello world</div>
+    return <div id = "menu">
+        <Select
+            value = {language}
+            setValue = {setLanguage}
+            options = {languages}
+            title = "Language:"
+        />
+        <Select
+            value = {theme}
+            setValue = {setTheme}
+            options = {themes}
+            title = "Theme:"
+        />
+        <Select
+            value = {indent}
+            setValue = {setIndent}
+            options = {indents}
+            title = "Indentation:"
+        />
+    </div>
 }
 
 export default Menu

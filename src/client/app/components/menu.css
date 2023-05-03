@@ -1,3 +1,6 @@
 #menu {
+    display: flex;
     flex-grow: 0;
+    justify-content: right;
+    padding-right: 15px;
 }

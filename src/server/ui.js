@@ -10,7 +10,7 @@ export const openDialog = () => {
   const html = HtmlService.createHtmlOutputFromFile('app')
     .setWidth(700)
     .setHeight(750);
-  DocumentApp.getUi().showModalDialog(html, 'Code Editor')
+  DocumentApp.getUi().showModalDialog(html, 'Docs++')
 };
 
 export const closeDialog = (title) => {
