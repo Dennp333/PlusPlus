@@ -22,6 +22,13 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyboardShortcuts);
+    return () => {
+      window.removeEventListener('keydown', handleKeyboardShortcuts);
+    };
+  }, [])
+
   const replaceText = async () => {
     try {
       setRenderEditor(false)
@@ -30,6 +37,19 @@ const App = () => {
     } catch (error) {
       setRenderEditor(true)
       alert(error)
+    }
+  }
+
+  const controlS = () => {
+    replaceText()
+  }
+
+  const handleKeyboardShortcuts = (e) => {
+    if (e.metaKey || e.ctrlKey) {
+      if (e.key == 's') {
+        e.preventDefault();
+        controlS()
+      }
     }
   }
 

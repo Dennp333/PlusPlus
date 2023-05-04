@@ -53,26 +53,36 @@ button:hover {
 }
 .loadingContainer .ball1 {
     z-index:1;
-    -moz-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation: bounce 2s infinite ease-in-out;
+    -moz-animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation: bounce 1.6s infinite ease-in-out;
+    animation: bounce 1.2s infinite ease-in-out;
 }
 .loadingContainer .ball2 {
-    -moz-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation-delay: 0.25s;
-    animation-delay: 0.25s;
+    -moz-animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation: bounce 1.6s infinite ease-in-out;
+    animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
 }
 .loadingContainer .ball3 {
-    -moz-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
+    -moz-animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation: bounce 1.6s infinite ease-in-out;
+    animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
 }
 .loadingContainer .ball4 {
-    -moz-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation: bounce 2s infinite ease-in-out;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
+    -moz-animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation: bounce 1.6s infinite ease-in-out;
+    animation: bounce 1.6s infinite ease-in-out;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+@keyframes bounce {
+    0%,15% {transform: translate(0,0);}
+    50% {transform: translate(0,-30px);background:rgb(218 220 224);}
+    85%, 100% {transform: translate(0,0);}; 
 }
 
 @-moz-keyframes bounce {
