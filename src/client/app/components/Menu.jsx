@@ -1,27 +1,27 @@
 import React from 'react'
 import './menu.css'
-import Select from './Select'
+import Setting from './Setting'
 import {languages, themes, indents} from '../../utils/constants'
 
 const Menu = ({language, handleLanguageChange, indent, handleIndentChange, theme, handleThemeChange}) => {
     return <div id = "menu">
-        <Select
+        <Setting
             value = {language}
             setValue = {handleLanguageChange}
             options = {languages}
-            title = "Language:"
+            label = "Language"
         />
-        <Select
+        <Setting
             value = {indent}
             setValue = {handleIndentChange}
             options = {indents}
-            title = "Indentation:"
+            label = "Indentation"
         />
-        <Select
+        <Setting
             value = {theme}
             setValue = {handleThemeChange}
             options = {themes}
-            title = "Theme:"
+            label = "Theme"
         />
     </div>
 }

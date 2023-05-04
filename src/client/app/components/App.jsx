@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Editor from '@monaco-editor/react';
+import Editor from '@monaco-editor/react'
 import Menu from './Menu'
+import Button from '@mui/material/Button'
+import SaveIcon from '@mui/icons-material/Save'
 import { serverFunctions } from '../../utils/serverFunctions'
+import '@fontsource/roboto/400.css';
 import './app.css'
 
 const App = () => {
@@ -107,7 +110,15 @@ const App = () => {
             />
           </div>
           <div id = "bottom">
-            <button onClick = {replaceText}>Save</button>
+            <Button  
+              variant = "contained"
+              onClick = {replaceText}
+              endIcon = {<SaveIcon />}
+              sx = {{
+                marginTop: '4px'
+              }}>
+                Save
+            </Button>
           </div>
         </div>
       }
