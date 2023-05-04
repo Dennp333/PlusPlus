@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './menu.css'
 import Select from './Select'
 import {languages, themes, indents} from '../../utils/constants'
 
 const Menu = ({language, setLanguage, indent, setIndent, theme, setTheme}) => {
-    const [open, setOpen] = useState(false)
     return <div id = "menu">
         <Select
             value = {language}
