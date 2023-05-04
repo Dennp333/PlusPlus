@@ -6,9 +6,9 @@ import './app.css'
 
 const App = () => {
   const [code, setCode] = useState("");
-  const [language, setLanguage] = useState("python") //set default to null in prod
-  const [indent, setIndent] = useState(4) //set default to null in prod
-  const [theme, setTheme] = useState("light") //set default to null in prod
+  const [language, setLanguage] = useState(null)
+  const [indent, setIndent] = useState(null)
+  const [theme, setTheme] = useState(null)
   const [renderEditor, setRenderEditor] = useState(true)
 
   useEffect(async () => {
@@ -21,6 +21,15 @@ const App = () => {
       await serverFunctions.closeDialog("Closing...")
     }
   }, []);
+
+  useEffect(() => {
+    const storedLanguage = window.localStorage.getItem('docs++.language')
+    const storedIndent = window.localStorage.getItem('docs++.indent')
+    const storedTheme = window.localStorage.getItem('docs++.theme')
+    storedLanguage ? setLanguage(storedLanguage) : setLanguage("python")
+    storedIndent ? setIndent(storedIndent) : setIndent(4)
+    storedTheme ? setTheme(storedTheme) : setTheme("light")
+  })
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyboardShortcuts);
@@ -53,6 +62,21 @@ const App = () => {
     }
   }
 
+  const handleLanguageChange = (value) => {
+    window.localStorage.setItem('docs++.language', value)
+    setLanguage(value)
+  }
+
+  const handleIndentChange = (value) => {
+    window.localStorage.setItem('docs++.indent', value)
+    setIndent(value)
+  }
+
+  const handleThemeChange = (value) => {
+    window.localStorage.setItem('docs++.theme', value)
+    setTheme(value)
+  }
+
   const options = {
     minimap: {enabled: false},
     detectIndentation: false,
@@ -66,11 +90,11 @@ const App = () => {
         <div id = "body">
           <Menu
             language = {language}
-            setLanguage = {setLanguage}
+            handleLanguageChange = {handleLanguageChange}
             indent = {indent}
-            setIndent = {setIndent}
+            handleIndentChange = {handleIndentChange}
             theme = {theme}
-            setTheme = {setTheme}
+            handleThemeChange = {handleThemeChange}
           />
           <div id = "editor">
             <Editor

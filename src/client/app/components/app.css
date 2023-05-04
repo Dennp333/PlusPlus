@@ -55,7 +55,7 @@ button:hover {
     z-index:1;
     -moz-animation: bounce 1.6s infinite ease-in-out;
     -webkit-animation: bounce 1.6s infinite ease-in-out;
-    animation: bounce 1.2s infinite ease-in-out;
+    animation: bounce 1.6s infinite ease-in-out;
 }
 .loadingContainer .ball2 {
     -moz-animation: bounce 1.6s infinite ease-in-out;
