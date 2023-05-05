@@ -39,7 +39,7 @@ const App = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyboardShortcuts);
     };
-  }, [])
+  }, [code])
 
   const replaceText = async () => {
     try {
@@ -52,15 +52,11 @@ const App = () => {
     }
   }
 
-  const controlS = () => {
-    replaceText()
-  }
-
   const handleKeyboardShortcuts = (e) => {
     if (e.metaKey || e.ctrlKey) {
       if (e.key == 's') {
         e.preventDefault();
-        controlS()
+        replaceText()
       }
     }
   }
