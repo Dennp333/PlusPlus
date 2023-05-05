@@ -32,7 +32,7 @@ const App = () => {
     storedLanguage ? setLanguage(storedLanguage) : setLanguage("python")
     storedIndent ? setIndent(storedIndent) : setIndent(4)
     storedTheme ? setTheme(storedTheme) : setTheme("light")
-  })
+  }, [])
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyboardShortcuts);
