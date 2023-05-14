@@ -85,47 +85,42 @@ const App = () => {
 
   return (
     <>
-      {renderEditor &&
-        <div id = "body">
-          <Menu
+      <div id = "body">
+        <Menu
+          language = {language}
+          handleLanguageChange = {handleLanguageChange}
+          indent = {indent}
+          handleIndentChange = {handleIndentChange}
+          theme = {theme}
+          handleThemeChange = {handleThemeChange}
+        />
+        <div id = "editor">
+          <Editor
+            value = {code}
+            onChange = {(value, event) => setCode(value)}
             language = {language}
-            handleLanguageChange = {handleLanguageChange}
-            indent = {indent}
-            handleIndentChange = {handleIndentChange}
             theme = {theme}
-            handleThemeChange = {handleThemeChange}
+            height = "100%"
+            options = {options}
           />
-          <div id = "editor">
-            <Editor
-              value = {code}
-              onChange = {(value, event) => setCode(value)}
-              language = {language}
-              theme = {theme}
-              height = "100%"
-              options = {options}
-            />
-          </div>
-          <div id = "bottom">
+        </div>
+        <div id = "bottom">
+          {renderEditor &&
             <Button  
               variant = "contained"
               onClick = {replaceText}
               endIcon = {<SaveIcon />}
-              sx = {{
-                marginTop: '4px'
-              }}>
-                Save
+            >
+              Save
             </Button>
-          </div>
+          }
+          {!renderEditor &&
+            <div class="square-holder">
+              <div class="square"></div>
+            </div>
+          }
         </div>
-      }
-      {!renderEditor &&
-        <div class="loadingContainer">
-          <div class="ball1"></div>
-          <div class="ball2"></div>
-          <div class="ball3"></div>
-          <div class="ball4"></div>
-        </div>
-      }
+      </div>
     </>
   );
 };
