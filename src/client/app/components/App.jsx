@@ -19,7 +19,11 @@ const App = () => {
       const response = await serverFunctions.getSelectedText()
       setCode(response)
     } catch (error) {
-      alert(error)
+      if (error.includes("PERMISSION DENIED")) {
+        alert("PERMISSION DENIED: Try logging out of all Google accounts")
+      } else {
+        alert(error)
+      }
       setRenderEditor(false)
       await serverFunctions.closeDialog("Closing...")
     }
