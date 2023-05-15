@@ -29,8 +29,6 @@ export const getSelectedText = () => {
     return text
 }
 
-// We may need to optimize this function - I think making so many server calls could be slow
-// getSelectedText should return some kind of object that we can reuse here
 export const insertOrReplaceText = (text) => {
     let selection = DocumentApp.getActiveDocument().getSelection()
     if (selection) {
