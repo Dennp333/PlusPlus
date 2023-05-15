@@ -19,7 +19,7 @@ const App = () => {
       const response = await serverFunctions.getSelectedText()
       setCode(response)
     } catch (error) {
-      if (error.includes("PERMISSION DENIED")) {
+      if (error.message.includes("PERMISSION")) {
         alert("PERMISSION DENIED: Try logging out of all Google accounts")
       } else {
         alert(error)
