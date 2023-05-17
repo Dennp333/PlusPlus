@@ -30,7 +30,8 @@ export const getSelectedText = () => {
 }
 
 export const insertOrReplaceText = (text) => {
-    let selection = DocumentApp.getActiveDocument().getSelection()
+    let document = DocumentApp.getActiveDocument()
+    let selection = document.getSelection()
     if (selection) {
         let elements = selection.getRangeElements()
 
@@ -68,7 +69,7 @@ export const insertOrReplaceText = (text) => {
             }
         }
     } else {
-        let cursor = DocumentApp.getActiveDocument().getCursor()
+        let cursor = document.getCursor()
         if (cursor) {
             let success = cursor.insertText(text)
             if (!success) {
