@@ -1,6 +1,6 @@
 export const onOpen = () => {
   const menu = DocumentApp.getUi()
-    .createMenu('Docs++')
+    .createMenu('PlusPlus')
     .addItem('Insert Code', 'openDialog')
 
   menu.addToUi();
@@ -10,7 +10,7 @@ export const openDialog = () => {
   const html = HtmlService.createHtmlOutputFromFile('app')
     .setWidth(700)
     .setHeight(750);
-  DocumentApp.getUi().showModalDialog(html, 'Docs++')
+  DocumentApp.getUi().showModalDialog(html, 'PlusPlus')
 };
 
 export const closeDialog = (title) => {
