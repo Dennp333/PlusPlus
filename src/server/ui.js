@@ -1,3 +1,7 @@
+export const onInstall = () => {
+  onOpen()
+}
+
 export const onOpen = () => {
   const menu = DocumentApp.getUi()
     .createMenu('PlusPlus')
